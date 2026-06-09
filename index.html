@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息管理首页 - 政务版</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkLogin();renderTable();">
+    <div class="top-header">
+        <h1>个人信息综合管理平台</h1>
+        <p>政务标准化管理系统 | 数据查询与维护</p>
+    </div>
+
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <a href="index.html" class="active">信息列表</a>
+            <a href="add.html">新增信息</a>
+            <a href="javascript:logout();">退出登录</a>
+        </div>
+
+        <!-- 查询区域 -->
+        <div class="gov-card">
+            <div class="card-title">数据查询</div>
+            <div class="card-body search-box">
+                <input type="text" id="searchKey" placeholder="请输入姓名/电话/邮箱进行查询">
+                <button class="btn btn-primary" onclick="searchData()">查 询</button>
+                <button class="btn" onclick="clearSearch()">清 空</button>
+            </div>
+        </div>
+
+        <!-- 数据列表区域 -->
+        <div class="gov-card">
+            <div class="card-title">信息数据一览表</div>
+            <div class="card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th width="60">序号</th>
+                            <th>姓名</th>
+                            <th>联系电话</th>
+                            <th>电子邮箱</th>
+                            <th>备注</th>
+                            <th width="160">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+                <div id="emptyTip" class="empty-text" style="display:none;">
+                    暂无相关数据，请添加信息后查看
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

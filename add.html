@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增/编辑信息</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkLogin();initEdit();">
+    <div class="top-header">
+        <h1>个人信息综合管理平台</h1>
+        <p>政务标准化管理系统 | 信息录入</p>
+    </div>
+
+    <div class="container">
+        <div class="nav-bar">
+            <a href="index.html">信息列表</a>
+            <a href="add.html" class="active">新增信息</a>
+            <a href="javascript:logout();">退出登录</a>
+        </div>
+
+        <div class="gov-card">
+            <div class="card-title">信息录入表单 <span class="red">* 为必填项</span></div>
+            <div class="card-body">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label>姓　　名 <span class="red">*</span>：</label>
+                    <input type="text" id="name" placeholder="请输入姓名">
+                </div>
+                <div class="form-group">
+                    <label>联系电话 <span class="red">*</span>：</label>
+                    <input type="text" id="phone" placeholder="请输入联系电话">
+                </div>
+                <div class="form-group">
+                    <label>电子邮箱：</label>
+                    <input type="email" id="email" placeholder="请输入电子邮箱">
+                </div>
+                <div class="form-group">
+                    <label>备　　注：</label>
+                    <textarea id="remark" rows="4" placeholder="请输入补充备注信息"></textarea>
+                </div>
+                <div class="form-group" style="margin-left: 100px;">
+                    <button class="btn btn-primary" onclick="saveInfo()">提 交 保 存</button>
+                    <button class="btn" style="margin-left:15px;" onclick="location.href='index.html'">返 回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js">
+        // 初始化编辑数据
+        function initEdit(){
+            let idx = localStorage.getItem("editIndex");
+            if(idx !== null){
+                let list = getData();
+                let item = list[Number(idx)];
+                document.getElementById("editId").value = idx;
+                document.getElementById("name").value = item.name;
+                document.getElementById("phone").value = item.phone;
+                document.getElementById("email").value = item.email;
+                document.getElementById("remark").value = item.remark;
+                localStorage.removeItem("editIndex");
+            }
+        }
+    </script>
+</body>
+</html>
