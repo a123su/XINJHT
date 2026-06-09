@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>信息管理首页 - 政务版</title>
     <link rel="stylesheet" href="style.css">
+    <!-- 引入Excel导出库CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body onload="checkLogin();renderTable();">
     <div class="top-header">
@@ -20,34 +22,42 @@
             <a href="javascript:logout();">退出登录</a>
         </div>
 
-        <!-- 查询区域 -->
+        <!-- 查询区域 美化 -->
         <div class="gov-card">
-            <div class="card-title">数据查询</div>
+            <div class="card-title">
+                数据查询
+                <span class="count-tag">共 <span id="totalCount">0</span> 条数据</span>
+            </div>
             <div class="card-body search-box">
-                <input type="text" id="searchKey" placeholder="请输入姓名/电话/邮箱进行查询">
+                <input type="text" id="searchKey" placeholder="请输入姓名/手机号/身份证号/家庭住址进行查询">
                 <button class="btn btn-primary" onclick="searchData()">查 询</button>
-                <button class="btn" onclick="clearSearch()">清 空</button>
+                <button class="btn btn-default" onclick="clearSearch()">清 空</button>
+                <button class="btn btn-success" onclick="exportToExcel()">导出Excel</button>
             </div>
         </div>
 
-        <!-- 数据列表区域 -->
+        <!-- 数据列表区域 优化 解决竖排 -->
         <div class="gov-card">
             <div class="card-title">信息数据一览表</div>
             <div class="card-body">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th width="60">序号</th>
-                            <th>姓名</th>
-                            <th>联系电话</th>
-                            <th>电子邮箱</th>
-                            <th>备注</th>
-                            <th width="160">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>手机号</th>
+                                <th>身份证号</th>
+                                <th>家庭住址</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
                 <div id="emptyTip" class="empty-text" style="display:none;">
                     暂无相关数据，请添加信息后查看
                 </div>
