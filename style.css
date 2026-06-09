@@ -9,64 +9,78 @@
 :root {
     --gov-main: #0F4C81;      /* 政务主深蓝 */
     --gov-light: #2367a8;
+    --gov-dark: #083050;
     --gov-gray: #666666;
+    --gov-light-gray: #f0f2f5;
     --gov-border: #d0d7e3;
     --gov-bg: #f5f7fa;
     --gov-white: #ffffff;
     --gov-red: #d93025;
     --gov-green: #008631;
-    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --radius: 4px;
 }
 
 body {
     background-color: var(--gov-bg);
     color: #333;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-size: 15px;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 20px 15px;
 }
 
-/* 头部标题栏 */
+/* 头部标题栏 优化 */
 .top-header {
-    background-color: var(--gov-main);
+    background: linear-gradient(90deg, var(--gov-dark), var(--gov-main));
     color: var(--gov-white);
-    padding: 20px 0;
+    padding: 24px 0;
     text-align: center;
     box-shadow: var(--shadow);
     margin-bottom: 20px;
 }
 
 .top-header h1 {
-    font-size: 26px;
-    font-weight: normal;
-    letter-spacing: 2px;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
 }
 
 .top-header p {
-    font-size: 14px;
+    font-size: 15px;
     opacity: 0.9;
-    margin-top: 6px;
+    font-weight: 300;
 }
 
-/* 导航栏 */
+/* 导航栏 优化 */
 .nav-bar {
     background: var(--gov-white);
     border: 1px solid var(--gov-border);
     margin-bottom: 20px;
     display: flex;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
 .nav-bar a {
     display: block;
-    padding: 12px 24px;
+    padding: 14px 28px;
     text-decoration: none;
     color: #333;
     border-right: 1px solid var(--gov-border);
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-bar a:last-child {
+    border-right: none;
 }
 
 .nav-bar a:hover, .nav-bar a.active {
@@ -74,65 +88,91 @@ body {
     color: #fff;
 }
 
-/* 卡片容器 政务面板 */
+/* 卡片容器 政务面板 优化 */
 .gov-card {
     background: var(--gov-white);
     border: 1px solid var(--gov-border);
     margin-bottom: 20px;
     box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 
 .card-title {
-    background-color: var(--gov-main);
+    background: linear-gradient(90deg, var(--gov-main), var(--gov-light));
     color: #fff;
-    padding: 12px 18px;
-    font-size: 16px;
+    padding: 14px 20px;
+    font-size: 17px;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card-body {
-    padding: 20px;
+    padding: 24px 20px;
 }
 
-/* 表单通用样式 */
+/* 表单通用样式 优化 */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .form-group label {
     display: inline-block;
-    width: 100px;
+    width: 120px;
     font-size: 15px;
     color: #333;
+    font-weight: 500;
+    flex-shrink: 0;
 }
 
 .form-group input,
+.form-group select,
 .form-group textarea {
-    padding: 10px 12px;
+    padding: 12px 15px;
     border: 1px solid var(--gov-border);
-    border-radius: 2px;
+    border-radius: var(--radius);
     font-size: 15px;
-    width: 280px;
+    width: 320px;
+    transition: all 0.2s ease;
+    background: var(--gov-white);
 }
 
 .form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--gov-main);
+    box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.8;
 }
 
 .red {
     color: var(--gov-red);
 }
 
-/* 按钮样式 政务风 */
+/* 按钮样式 政务风 优化 */
 .btn {
-    padding: 10px 22px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 2px;
+    border-radius: var(--radius);
     font-size: 15px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .btn-primary {
@@ -142,6 +182,7 @@ body {
 
 .btn-primary:hover {
     background-color: var(--gov-light);
+    transform: translateY(-1px);
 }
 
 .btn-danger {
@@ -149,52 +190,107 @@ body {
     color: #fff;
 }
 
+.btn-danger:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
 .btn-success {
     background-color: var(--gov-green);
     color: #fff;
 }
 
-/* 查询区域 */
+.btn-success:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-default {
+    background-color: var(--gov-light-gray);
+    color: #333;
+    border: 1px solid var(--gov-border);
+}
+
+.btn-default:hover {
+    background-color: var(--gov-border);
+}
+
+/* 查询区域 美化 核心优化 */
 .search-box {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
     flex-wrap: wrap;
 }
 
-/* 数据列表样式 */
+.search-box input {
+    padding: 12px 15px;
+    border: 1px solid var(--gov-border);
+    border-radius: var(--radius);
+    font-size: 15px;
+    width: 380px;
+    transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--gov-main);
+    box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.1);
+}
+
+/* 数据列表样式 核心优化 解决竖排问题 */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--gov-border);
+}
+
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
+    table-layout: fixed;
 }
 
 .data-table th,
 .data-table td {
     border: 1px solid var(--gov-border);
-    padding: 12px 10px;
+    padding: 14px 10px;
     text-align: center;
     font-size: 14px;
+    /* 彻底解决文字竖排 */
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .data-table th {
-    background-color: #eef2f7;
+    background: linear-gradient(90deg, var(--gov-light-gray), #e8edf2);
     font-weight: 500;
+    color: var(--gov-main);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .data-table tr:hover {
     background-color: #f8f9fc;
 }
 
-/* 空数据提示 */
-.empty-text {
-    text-align: center;
-    padding: 40px;
-    color: var(--gov-gray);
-    font-size: 15px;
+.data-table tr:nth-child(even) {
+    background-color: #fafbfd;
 }
 
-/* 登录/注册居中面板 */
+/* 空数据提示 优化 */
+.empty-text {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gov-gray);
+    font-size: 16px;
+}
+
+/* 登录/注册居中面板 优化 */
 .login-wrap {
     width: 100%;
     min-height: 100vh;
@@ -203,43 +299,76 @@ body {
     align-items: center;
     justify-content: center;
     background: var(--gov-bg);
+    padding: 20px;
 }
 
 .login-box {
-    width: 420px;
+    width: 480px;
     background: #fff;
     border: 1px solid var(--gov-border);
     box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 
 .login-tip {
     text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
+    margin-top: 20px;
+    font-size: 15px;
 }
 
 .login-tip a {
     color: var(--gov-main);
     text-decoration: none;
+    font-weight: 500;
 }
 
-/* 响应式 手机适配 */
+.login-tip a:hover {
+    text-decoration: underline;
+}
+
+/* 响应式 手机适配 完美适配 */
 @media (max-width: 768px) {
+    .top-header h1 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
     .form-group label {
-        width: 80px;
+        width: 100px;
     }
-    .form-group input, .form-group textarea {
-        width: calc(100% - 90px);
+
+    .form-group input, 
+    .form-group select,
+    .form-group textarea {
+        width: calc(100% - 110px);
     }
+
     .login-box {
-        width: 92%;
+        width: 100%;
     }
+
     .nav-bar a {
-        padding: 10px 12px;
+        padding: 12px 15px;
         font-size: 14px;
     }
-    .data-table th, .data-table td {
-        padding: 8px 4px;
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .search-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box .btn {
+        width: 100%;
+    }
+
+    .data-table th, 
+    .data-table td {
+        padding: 10px 6px;
         font-size: 13px;
     }
 }
